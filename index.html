@@ -1,0 +1,79 @@
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XCaw.app</title>
+  <style>
+
+    html {
+      background: linear-gradient(45deg, white, black);
+    }
+  
+ 
+  </style>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+                <link href="bootstrap/css/jquery.dataTables.css" rel="stylesheet">
+                <link href="css/style.css" rel="stylesheet">
+             
+</head>
+
+
+<body>    
+
+<br> 
+ 
+
+        <div class="row">
+
+            <div class="col-md-1">                
+            </div>
+            <div class="col-md-2">
+                <iframe src="left.html" width="100%" height="100%"></iframe>
+            </div>
+            <div class="col-md-6">
+                <iframe src="center.html" width="100%" height="100%"></iframe>
+            </div>
+            <div class="col-md-2">
+                <iframe src="right.html" width="100%" height="100%"></iframe>
+            </div>
+             <div class="col-md-1">                
+            </div>
+        </div>
+
+    
+<div class="container">    
+      <button class="boton-conectar" id="botonConectar">Conectar</button>  
+</div> 
+
+ 
+<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+
+    <script>
+        // Función para conectar con MetaMask en el documento principal
+        async function conectarMetaMask() {
+            if (window.ethereum) {
+                try {
+                    await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    console.log('Conexión exitosa con MetaMask');
+                } catch (error) {
+                    console.error('Error al conectar con MetaMask:', error.message);
+                }
+            } else {
+                console.error('MetaMask no está instalado.');
+            }
+        }
+    </script>
+
+
+
+
+
+
+
+
+</body>
+</html>
