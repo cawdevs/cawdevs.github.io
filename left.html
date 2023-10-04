@@ -107,6 +107,9 @@
 
 
 <div class="col-md-1"> 
+	<button id="btn-obtener-saldo">Obtener Saldo</button>
+	<div id="saldo">CAW token:</div>
+ 
 </div>
 
 
@@ -151,8 +154,95 @@
         <!-- Puedes agregar más elementos según sea necesario -->
     </aside>
 
+<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+<script>
+
+	     const CAW_tokenABI = [{"inputs":[{"internalType":"address","name":"contractAddress","type":"address"}],"name":"authorizeContract","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"contractAddress","type":"address"}],"name":"revokeAuthorization","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"address","name":"user","type":"address"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}];
+
+        // Constantes y variables globales
+        const tokenContractAddress = '0x4F024804734fcaECb4f454676998211675F84C89';
+         
+        const web3 = new Web3(window.ethereum);//conexion global de web3 
+
+        const tokenContract = new web3.eth.Contract(CAW_tokenABI, tokenContractAddress);
 
 
+
+        // Función para conectar con MetaMask en el archivo izquierdo
+        async function conectarMetaMask() {
+            if (window.ethereum) {
+                try {
+                    await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    console.log('Conexión exitosa con MetaMask desde el archivo izquierdo');
+
+                    const accounts = await web3.eth.getAccounts();
+                    const myAddress = accounts[0];
+
+                    showSuccess('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
+
+
+                    // Otros botones y acciones
+                    const btnObtenerSaldo = document.getElementById('btn-obtener-saldo');
+                    btnObtenerSaldo.addEventListener('click', obtenerSaldo);
+
+
+
+
+
+
+
+
+                } catch (error) {
+                    console.error('Error al conectar con MetaMask:', error.message);
+                }
+            } else {
+                console.error('MetaMask no está instalado.');
+            }
+        }
+
+
+         // Función para obtener el saldo del token
+          async function obtenerSaldo() {
+            // Obtener la dirección de la cuenta conectada
+            const accounts = await web3.eth.getAccounts();
+            const myAddress = accounts[0];
+            alert('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
+
+            //const tokenContractAddress = '0x4F024804734fcaECb4f454676998211675F84C89';
+            // Crear una instancia del contrato del token
+            const tokenContract = new web3.eth.Contract(CAW_tokenABI,tokenContractAddress);
+            // Obtener el saldo del token para la dirección de la cuenta conectada
+            const accountBalance = await tokenContract.methods.balanceOf(myAddress).call();
+            // Mostrar el saldo en la página web
+            const saldoElement = document.getElementById('saldo');
+            saldoElement.innerText = 'Saldo: ' + accountBalance;
+            
+          }
+
+        // Agregar un evento de clic al botón para llamar a la función conectarMetaMask
+        document.getElementById("botonConectar").addEventListener("click", conectarMetaMask);
+
+
+
+         // Funciones para mostrar mensajes en la página
+          function showSuccess(message) {
+            const successElement = document.getElementById('success-message');
+            successElement.innerText = message;
+          }
+
+          function showError(message) {
+            const errorElement = document.getElementById('error-message');
+            errorElement.innerText = message;
+          }
+
+          function showBalance(balance) {
+            const balanceElement = document.getElementById('saldo');
+            balanceElement.innerText = 'Saldo: ' + balance;
+          }
+   
+
+
+    </script>
    
 
 
