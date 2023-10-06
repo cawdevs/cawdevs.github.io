@@ -52,20 +52,26 @@
     <aside>
  <div class="container">        
  <div class="row">
-
-                          
-          
-
-
-
+                       
+   
   <div class="col-md-1">      
  <h3 style="margin-left: 10px; display: inline-block;">
-    <img src="images/caw_logo_3.svg" alt="My svg_logo" width="50" style="transform: rotate(45deg);">
-    <span style="vertical-align: middle;">XCaw</span>
+    <img src="static/images/caw_logo_3.svg" alt="My svg_logo" width="50" style="transform: rotate(45deg);">
+    
   </h3>
 </p>
-<br>
+
 </div>
+
+ <div class="col-md-1">      
+ <h2 style="margin-left: 10px; display: inline-block;">
+    
+    <span style="vertical-align: middle;">XCaw</span>
+  </h2>
+</p>
+
+</div>
+
 
  <div class="col-md-1"> 
 <p>
@@ -105,47 +111,57 @@
 </div>
 
 
-
 <div class="col-md-1"> 
-	<button id="btn-obtener-saldo">Obtener Saldo</button>
-	<div id="saldo">CAW token:</div>
- 
+
+  <div id="success-message"></div>
+  <div id="error-message"></div>
+  <div id="saldo_CAW">CAW token:</div>
+  <div id="saldo_ETH">ETH Coin:</div>
+  <button id="btn-obtener-saldo">Obtener Saldo</button>
+
+  <button id="btn-aprobar-contrato">Aprobar Contrato</button>
+  <button id="btn-mintear-nft">Mintear NFT</button>
+  <input type="text" id="text-mintear-nft" />
+  <button id="btn-get-nft">NFTs</button>
+  <select id="selector_NFTs"></select>
+  
 </div>
 
 
 <div class="col-md-6"> 
-	<div class="container">    
-      <button class="boton-conectar" id="botonConectar">Conectar</button>  
-	</div> 
+  <div class="container">          
+        <button class="boton-conectar" id="btn-conectar" onclick="conectarMetaMask()">Conectar</button>
+      
+  </div> 
 
-	
+  
    
 
-	
+  
 
-	  
+    
 </div>
 
 
 </div>
 </div>
 <!--
-	glyphicon glyphicon-cog
-		
+  glyphicon glyphicon-cog
+    
 
-			glyphicon glyphicon-picture
+      glyphicon glyphicon-picture
 
-				glyphicon glyphicon-plus-sign
-					glyphicon glyphicon-heart-empty
-						glyphicon glyphicon-send
-							glyphicon glyphicon-heart
-								glyphicon glyphicon-th-list
-									
-										glyphicon glyphicon-refresh
+        glyphicon glyphicon-plus-sign
+          glyphicon glyphicon-heart-empty
+            glyphicon glyphicon-send
+              glyphicon glyphicon-heart
+                glyphicon glyphicon-th-list
+                  
+                    glyphicon glyphicon-refresh
 
-											glyphicon glyphicon-qrcode
-											glyphicon glyphicon-map-marker
-												glyphicon glyphicon-retweet
+                      glyphicon glyphicon-qrcode
+                      glyphicon glyphicon-map-marker
+                        glyphicon glyphicon-retweet
 
 -->
     
@@ -154,77 +170,201 @@
         <!-- Puedes agregar más elementos según sea necesario -->
     </aside>
 
+
+
 <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
-<script>
+<script>  
+           const CAW_tokenABI = [{"inputs":[{"internalType":"address","name":"contractAddress","type":"address"}],"name":"authorizeContract","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"contractAddress","type":"address"}],"name":"revokeAuthorization","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"address","name":"user","type":"address"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}];
+          
+          const NFT_ContractABI=[{"constant":true,"inputs":[{"name":"user","type":"address"}],"name":"getCawBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"},{"name":"user","type":"address"}],"name":"burnCaw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"username","type":"string"}],"name":"isMinted","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"owner","type":"address"},{"name":"nftUsername","type":"string"}],"name":"isNFTOwner","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"username","type":"string"}],"name":"getMintingCost","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":true,"inputs":[{"name":"username","type":"string"}],"name":"validateUsername","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":true,"inputs":[{"name":"walletAddress","type":"address"}],"name":"getMintedUsernames","outputs":[{"name":"","type":"string[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"to","type":"address"},{"name":"username","type":"string"}],"name":"transferNFT","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"username","type":"string"},{"name":"price","type":"uint256"}],"name":"sellNFT","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"username","type":"string"}],"name":"cancelNFTSale","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"username","type":"string"}],"name":"buyNFT","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"username","type":"string"}],"name":"mintNFT","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_cawContractAddress","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"username","type":"string"}],"name":"NFTMinted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"username","type":"string"},{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"}],"name":"NFTTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"username","type":"string"},{"indexed":false,"name":"price","type":"uint256"}],"name":"NFTForSale","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"username","type":"string"},{"indexed":true,"name":"buyer","type":"address"},{"indexed":false,"name":"price","type":"uint256"}],"name":"NFTSold","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"username","type":"string"}],"name":"NFTSaleCancelled","type":"event"}]; 
 
-	     const CAW_tokenABI = [{"inputs":[{"internalType":"address","name":"contractAddress","type":"address"}],"name":"authorizeContract","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"contractAddress","type":"address"}],"name":"revokeAuthorization","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"address","name":"user","type":"address"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}];
-
-        // Constantes y variables globales
-        const tokenContractAddress = '0x4F024804734fcaECb4f454676998211675F84C89';
+          // Constantes y variables globales
+          const tokenContractAddress = '0x4F024804734fcaECb4f454676998211675F84C89';
+          const nftContractAddress = '0x5F60A07d7cb17226817464f7cAbC363547C5cf89';
          
-        const web3 = new Web3(window.ethereum);//conexion global de web3 
 
-        const tokenContract = new web3.eth.Contract(CAW_tokenABI, tokenContractAddress);
+          const web3 = new Web3(window.ethereum);
+          const tokenContract = new web3.eth.Contract(CAW_tokenABI, tokenContractAddress);
+         
 
-
-
-        // Función para conectar con MetaMask en el archivo izquierdo
-        async function conectarMetaMask() {
-            if (window.ethereum) {
-                try {
-                    await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    console.log('Conexión exitosa con MetaMask desde el archivo izquierdo');
-
-                    const accounts = await web3.eth.getAccounts();
-                    const myAddress = accounts[0];
-
-                    showSuccess('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
-
-
-                    // Otros botones y acciones
-                    const btnObtenerSaldo = document.getElementById('btn-obtener-saldo');
-                    btnObtenerSaldo.addEventListener('click', obtenerSaldo);
-
-
-
-
-
-
-
-
-                } catch (error) {
-                    console.error('Error al conectar con MetaMask:', error.message);
-                }
-            } else {
-                console.error('MetaMask no está instalado.');
+          // Función para conectar con MetaMask
+          async function conectarMetaMask() {
+            if (typeof window.ethereum === 'undefined') {
+              showError('MetaMask no está instalado. Por favor, instala MetaMask.');
+              return;
             }
-        }
+
+            try {
+              await window.ethereum.enable();
+              // Crear una instancia de web3 con MetaMask como proveedor
+              const web3 = new Web3(window.ethereum);
+              const accounts = await web3.eth.getAccounts();
+              const myAddress = accounts[0];
+
+              showSuccess('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
+
+              // Obtener el saldo automáticamente al conectarse
+              obtenerSaldo();
+              //obtienen los nft minteados
+              getmintedNFT();
+
+                    
+
+              // Otros botones y acciones
+              const btnObtenerSaldo = document.getElementById('btn-obtener-saldo');
+              btnObtenerSaldo.addEventListener('click', obtenerSaldo);
+
+              const btnAprobarContrato = document.getElementById('btn-aprobar-contrato');
+              btnAprobarContrato.addEventListener('click', aprobarContrato);
+
+              const btnMintearNFT = document.getElementById('btn-mintear-nft');
+              btnMintearNFT.addEventListener('click', mintearNFT);
+
+              const btngetNFT = document.getElementById('btn-get-nft');
+              btngetNFT.addEventListener('click', getmintedNFT);
+
+            
+
+              // ...
+            } catch (error) {
+              showError('Hubo un error al conectar con MetaMask: ' + error.message);
+            }
+          }
 
 
-         // Función para obtener el saldo del token
+
+
+          // Función para obtener el saldo del token
           async function obtenerSaldo() {
             // Obtener la dirección de la cuenta conectada
             const accounts = await web3.eth.getAccounts();
             const myAddress = accounts[0];
             alert('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
 
-            //const tokenContractAddress = '0x4F024804734fcaECb4f454676998211675F84C89';
+
+            //obtiene el saldo en ether de la cuenta
+            // Obtener el saldo en Wei (la unidad más pequeña de Ethereum)
+            const balanceWei = await web3.eth.getBalance(myAddress);
+            // Convertir el saldo de Wei a Ether
+            const balanceEther = web3.utils.fromWei(balanceWei, 'ether');
+            // Mostrar el saldo en la página web
+            const saldoElementETH = document.getElementById('saldo_ETH');
+            saldoElementETH.innerText = 'ETH: ' + balanceEther;
+
+
+
             // Crear una instancia del contrato del token
             const tokenContract = new web3.eth.Contract(CAW_tokenABI,tokenContractAddress);
             // Obtener el saldo del token para la dirección de la cuenta conectada
             const accountBalance = await tokenContract.methods.balanceOf(myAddress).call();
             // Mostrar el saldo en la página web
-            const saldoElement = document.getElementById('saldo');
+            const saldoElement = document.getElementById('saldo_CAW');
             saldoElement.innerText = 'Saldo: ' + accountBalance;
             
           }
 
-        // Agregar un evento de clic al botón para llamar a la función conectarMetaMask
-        document.getElementById("botonConectar").addEventListener("click", conectarMetaMask);
+
+           // Función para aprobar un contrato
+          async function aprobarContrato() {
+            // Obtener la dirección de la cuenta conectada
+            const accounts = await web3.eth.getAccounts();
+            const myAddress = accounts[0];
+            alert('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
+
+            // Aprobar el contrato
+            // Cantidad de aprobación en wei
+            //const approvalAmount = web3.utils.toWei('100', 'ether');
+            // Obtener la instancia del contrato
+            const contract = new web3.eth.Contract(CAW_tokenABI, tokenContractAddress);
+
+            try {
+              await contract.methods.authorizeContract(nftContractAddress).send({ from: myAddress });
+              alert('Contrato aprobado exitosamente:');
+              console.log('Contrato aprobado exitosamente.');
+            } catch (error) {
+              alert('Error al aprobar el contrato');
+              console.error('Error al aprobar el contrato:', error);
+            }
+
+           
+          }
 
 
 
-         // Funciones para mostrar mensajes en la página
+
+          // Función para mintear un NFT
+          async function mintearNFT() {
+            // Obtener la dirección de la cuenta conectada
+            const accounts = await web3.eth.getAccounts();
+            const myAddress = accounts[0];
+            alert('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
+            
+            const contract = new web3.eth.Contract(NFT_ContractABI, nftContractAddress);
+            // Mintear el NFT
+            const nftusername = document.getElementById('text-mintear-nft').value;
+            // ...
+            try {
+              await contract.methods.mintNFT(nftusername).send({ from: myAddress });
+              alert('NFT Minteado exitosamente:');
+              console.log('NFT Minteado exitosamente.');
+                // Mostrar mensaje de éxito
+              showSuccess('NFT minteado correctamente.');
+            } catch (error) {
+              alert('Error al mintear el NFT');
+              console.error('Error al mintear el NFT:', error);
+            }
+
+          
+          }
+
+
+          // Función para mintear un NFT
+          async function getmintedNFT() {
+            // Obtener la dirección de la cuenta conectada
+            const accounts = await web3.eth.getAccounts();
+            const myAddress = accounts[0];
+            alert('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
+            
+            const contract = new web3.eth.Contract(NFT_ContractABI, nftContractAddress);
+            // Mintear el NFT
+            // ...
+            try {
+              const list_username = await contract.methods.getMintedUsernames(myAddress).call();  
+
+              
+              const selector = document.getElementById('selector_NFTs');
+              // Limpiar las opciones existentes
+              selector.innerHTML = '';
+              // Agregar las opciones de NFTs
+              for (const nft of list_username) {
+                const option = document.createElement('option');
+                option.text = nft;
+                selector.add(option);
+              }      
+              
+                
+
+              alert('Funcion list NFTs OK :');
+              console.log('Funcion list NFTs OK.');
+                // Mostrar mensaje de éxito
+              showSuccess('Funcion list NFTs OK.');
+            } catch (error) {
+              alert('Error list NFT');
+              console.error('Error list NFT:', error);
+            }
+
+          
+          }
+
+
+           
+
+
+         
+         
+
+
+          // Funciones para mostrar mensajes en la página
           function showSuccess(message) {
             const successElement = document.getElementById('success-message');
             successElement.innerText = message;
@@ -239,11 +379,19 @@
             const balanceElement = document.getElementById('saldo');
             balanceElement.innerText = 'Saldo: ' + balance;
           }
-   
+
+          // Otros botones y acciones
+          // ...
 
 
-    </script>
+
+
+</script>
    
+
+<script src="bootstrap/js/jquery.min.js" ></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
 
 
 </body>
