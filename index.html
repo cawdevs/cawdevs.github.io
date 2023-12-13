@@ -1,873 +1,356 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Columna Izquierda</title>
+  <title>Contador Regresivo</title>
 
-     <style>
-      html {
-           background: linear-gradient(45deg, white, white);
-             }
-        body {
-            font-family: Arial, sans-serif;
-        }
+   
+  <script>
+    // Obtén la fecha de finalización (año, mes, día, hora, minuto, segundo)
+    const endDate = new Date('2023-12-27T23:59:59').getTime();
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 50px;
-        }
+    // Actualiza el contador cada segundo
+    const timer = setInterval(function() {
+      // Obtén la fecha actual
+      const now = new Date().getTime();
 
-        .boton-conectar {
-            background-color: silver;
-            color: black;
-            border: 2px solid silver;
-            border-radius: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+      // Encuentra la diferencia entre la fecha de finalización y la fecha actual
+      const difference = endDate - now;
 
-        .boton-conectar:hover {
-            background-color: yellow;
-            border-color: yellow;
-        }
+      // Calcula días, horas, minutos y segundos
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-       
+      // Muestra el contador en un elemento con el id "timer"
+      document.getElementById('timer').innerHTML = `${days} : ${hours} : ${minutes} : ${seconds} `;
 
-    </style>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-
+      // Si la cuenta regresiva termina, muestra un mensaje
+      if (difference < 0) {
+        clearInterval(timer);
+        document.getElementById('timer').innerHTML = '¡Tiempo terminado!';
+      }
+    }, 1000); // Actualiza cada segundo
+  </script>
 
 
 </head>
-<body>
+
+
+<body style="background-color: black; color: yellow;">
+
+
+
+
+
+
+    <style>
+      body{
+  counter-reset:birds;
+  -webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+  overflow:hidden;
+}
+/*hide checkbox*/
+input{position:fixed; left:-10px; top:-10px;}
+
+h1{margin:0; text-align:center;}
+h2{position:fixed; right:20px; bottom:0; font-size:18px; color:red;}
+
+/*play area*/
+.wrapper{  
+  height:500px;
+  background: -webkit-linear-gradient(top, hsla(45, 100%, 90%, 1) 0%, hsla(49, 100%, 50%, 1) 100%);
+  position:relative;
+  cursor:crosshair;
+}
+/*count dead birds*/
+.input-circle:checked{
+  counter-increment:birds;
+}
+
+.sum{position:fixed; left:45%; top:60px; font-size:24px; fonot-weight:bold;}
+
+/*print to screen dead birds*/
+.sum:after{
+  content: counter(birds);
+}
+
+.input-circle ~ .pajaro{
+  opacity:0;
+  transition:0.3s  cubic-bezier(0,.43,1,0);
+  animation: move 8s infinite alternate;
+}
+.input-circle1:not(:checked) ~ .pajaro1,
+.input-circle2:not(:checked) ~ .pajaro2,
+.input-circle3:not(:checked) ~ .pajaro3,
+.input-circle4:not(:checked) ~ .pajaro4,
+.input-circle5:not(:checked) ~ .pajaro5,
+.input-circle6:not(:checked) ~ .pajaro6
+{
+  opacity:1; 
+}
+
+
+.input-circle1:checked ~ .pajaro1 span,
+.input-circle2:checked ~ .pajaro2 span,
+.input-circle3:checked ~ .pajaro3 span,
+.input-circle4:checked ~ .pajaro4 span,
+.input-circle5:checked ~ .pajaro5 span,
+.input-circle6:checked ~ .pajaro6 span
+{
+  display:block;
+  
+}
+
+.pajaro{   
+  position:absolute;
+  left:0;  
+  cursor:crosshair;
+}
+.pajaro>span{
+  display:none;position:absolute; z-index:2; left:-250%;bottom:-50%;  
+  background-color:white; border:solid 2px #000; width:80px; height:30px; padding:10px; border-radius:50%;
+}
+.pajaro>span:before{
+  content:"I'm Dead!"; color:red; font-weight:bold;
+}
+
+.pajaro1{top:50px;
+  animation-delay: -2s!important;
+  transform:scale(0.9);
+}
+.pajaro2{
+  top:100px;
+  animation-delay: -1s!important;
+  transform:scale(0.8); 
+}
+.pajaro3{
+  top:200px;
+  animation-delay: -3s!important;
+  transform:scale(1.4); 
+}
+
+.pajaro4{top:50px;
+  animation-delay: -12s!important;
+  transform:scale(0.9);
+}
+.pajaro5{
+  top:100px;
+  animation-delay: -16s!important;
+  transform:scale(0.5); 
+}
+.pajaro6{
+  top:200px;
+  animation-delay: -20s!important;
+  transform:scale(1.4); 
+}
+
+@keyframes move{
+0%{left:0%;}
+20%{left:20%;top:50%; }
+40%{top:30%; left:60%;}
+60%{top:80%;left:80%;}
+80%{top:10%; left:20%:}
+100%{top:30%; left:20%; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------------------------ body of the bird
+*/
+
+.pajaro{
+  background:black;
+  border-radius: 50% 50% 20% 20%;
+  color:white;
+  line-height:20px;
+  letter-spacing: 2px;
+  font-size:0.8em;
+  text-align:center;
+  position:absolute;
  
+  margin-top:-20px; margin-left:-10px;
+  width:15px; height:15px;
+  animation:planeo 0.8s linear infinite;
+  z-index:999;
+}
+
+.pajaro:after,
+.pajaro:before{
+  content:"";
+  position:absolute;
+  top:50%; left:50%;
+}
+
+/*------------------------------------------------------ bird wings
+*/
+
+.pajaro:after{
+  border-radius: 100% 100% 0 0;
+  box-shadow: inset 0px 5px 0 black;
+  width:100px; height:100px;
+  margin-top:-7px; margin-left:-50px;
+  transform-origin: 100% 0%;
+  animation:alas 3s linear infinite;
+}
+
+/*------------------------------------------------------ bird beak
+*/
+
+.pajaro:before{
+  background:#FFC37F;
+  border-radius: 100% 0% 20% 0%;
+  margin-top:3px; margin-left:-4px;
+  width:6px; height:6px;
+  transform:rotateZ(45deg);
+}
+
+/*------------------------------------------------------ wings animation
+*/
+
+@keyframes alas {
+  50%{
+    transform:rotateX(-1440deg);
+  }
+}
+
+/*------------------------------------------------------ bird animation
+*/
+
+@keyframes planeo {
+  40%{
+    transform:rotateZ(2deg) translateX(2px) translateY(10px) translateZ(0);
+    line-height:16px;
+    font-size:0.6em;
+  }
+  80%{
+    transform:rotateZ(-2deg) translateX(5px) translateY(8px) translateZ(0);
+  }
+}
+    </style>  
 
 
-<br>
 
-<div class="container">
-<div class="row">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Digital-7:wght@400;700&display=swap">
 
-            
-<div class="col-sm-2">
-<div class="well">
-                        
-        <h3 style="margin-left: 10px; display: inline-block;"><img src="static/images/caw_logo_3.svg" alt="My svg_logo" width="50" style="transform: rotate(45deg);"></h3>
-
- 
-        <p><h2 style="margin-left: 10px; display: inline-block;"><span style="vertical-align: middle;">XCaw</span></h2></p>
-
-        <p><h3 style="margin-left: 10px; display: inline-block;"><span class="glyphicon glyphicon-home" style="font-size: 24px; vertical-align: middle;"></span><span style="vertical-align: middle;">Home</span></h3></p>
-
-        <p><h3 style="margin-left: 10px; display: inline-block;"><span class="glyphicon glyphicon-search" style="font-size: 24px; vertical-align: middle;"></span><span style="vertical-align: middle;">Find</span></h3></p>
-
-        <p><h3 style="margin-left: 10px; display: inline-block;"><span class="glyphicon glyphicon-user" style="font-size: 24px; vertical-align: middle;"></span><span style="vertical-align: middle;">Profile</span></h3></p>
-
-        <p><h3 style="margin-left: 10px; display: inline-block;"><span class="glyphicon glyphicon-cog" style="font-size: 24px; vertical-align: middle;"></span><span style="vertical-align: middle;">Config</span></h3></p>
-           
-        <button class="boton-conectar" id="btn-conectar" onclick="conectarMetaMask()">Conectar</button>
+  
    
- </div>
- </div>
 
-
-
-
- <div class="col-sm-7">                    
-       <div class="well">
-                    <!--<div style="background: red; width:90px; height: 50px; display: inline-block; margin-top: 50px;"></div>  -->
-                  
-                          
-
-
-              
-                  <div class="container-fluid">
-                     <!-- <h2>Collapsible Panel</h2>
-                      <p>Click on the collapsible panel to open and close it.</p>   -->
-                      <div class="panel-group">
-                        <div class="panel panel-default">
-                             <div class="panel-heading">
-                                <h4 class="panel-title">
-                                      
-
- <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <h4> 
-     <div style="display:inline-block;" id="saldo_CAW"><font color="yellow">CAW:</font></div>
-     <div style="display:inline-block;" > </div>
-     <div style="display:inline-block;" > </div>
-     <div style="display:inline-block;" id="saldo_ETH"><font color="Magenta ">ETH:</font></div>
-     <div style="display:inline-block;" > </div>
-     <div style="display:inline-block;" > </div>
-     <a href="#" style="display:inline-block;" id="btn-obtener-saldo"><font color="white"><span class="glyphicon glyphicon-refresh"></span></font></a>
-     <div style="display:inline-block;" > </div>
-     <div style="display:inline-block;" > </div>
-     <a href="#" style="display:inline-block;" id="btn-send-saldo"><font color="white"><span class="glyphicon glyphicon-send"></span></font></a>     
-    </h4>
-
-    <div class="navbar-header">     
-       <img src="static/images/caw_logo_3.svg" alt="My svg_logo" width="60" style="transform: rotate(45deg);">
-    </div>
-    
-    <ul class="nav navbar-nav">
-      <!-- <li class="active"><a href="#">Home</a></li>  -->           
-    </ul>
-
-    <form class="navbar-form navbar-left" action="/action_page.php">
-    
-      <div class="form-group">
-         <select id="selector_NFTs" class="form-control" placeholder="Username@CAW"></select>
-      </div>     
-         <a id="btn-get-nft">@XCaw</a>
-   </form>
-
-   <ul class="nav navbar-nav navbar-right">    
-       <li> <a data-toggle="collapse" href="#collapse1"><span class="glyphicon glyphicon-user"></span></a> </li>
-
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-list">
-        <span class="caret"></span></a>
-      
-        <ul class="dropdown-menu">
-              <li><a href="#" data-toggle="modal" data-target="#myModal">Crear NFTUsername</a></li>
-              <li><a href="#" data-toggle="modal" data-target="#myModalprofile">Crear perfil</a></li>      
-              <li><a href="#" id="btn-aprobar-contrato">Aprobar Contrato</button></li>    
-        </ul>      
-      </li>  
-
-    </ul>
-  </div>
-  
-  <center>
-   <h4>
-    <div style="display:inline-block;" id= "addres-wallet"><font color="white"></font></div> 
-    <div style="display:inline-block;" > </div>
-    <div style="display:inline-block;" > </div>
-    <a href="#" style="display:inline-block;" id="btn-send-saldo"><font color="white"><span class="glyphicon glyphicon-qrcode"></span></font></a>
-   </h4>
-  </center>
-
-</nav>
+   <div class="wrapper">
  
-                      
-                             </div>
-                            
-                             <div id="collapse1" class="panel-collapse collapse">
 
-
-
-                                <!--****************************************************-->
-                                <!--****************************************************-->
-                                <style>
-    /* Estilos CSS para el perfil */
-    .profile-container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f5f5f5;
-      position: relative;
-    }
-    
-    .profile-photo {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      position: absolute;
-      left: 40px;
-      bottom: 240px;
-      border: 5px solid #fff;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    }
-    
-    .profile-cover {
-      width: 100%;
-      height: 200px;
-      margin-bottom: 20px;
-    }
-    
-    .profile-name {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .profile-acount {
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 10px;
-     }
-
-     .profile-username {
-      font-size: 16px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    
-    .profile-bio {
-      margin-bottom: 14px;
-    }
-    
-    .profile-location {
-      margin-bottom: 10px;
-    }
-    
-    .profile-website {
-      margin-bottom: 20px;
-    }
-  </style>
-                                <div class="profile-container">
-                                <img class="profile-cover" src="https://ipfs.io/ipfs/QmQEVVLJUR1WLN15S49rzDJsSP7za9DxeqpUzWuG4aondg" alt="Foto de portada">
-                                <img class="profile-photo" src="https://pbs.twimg.com/media/FyrVlskWYAEsJDM?format=jpg&name=small" alt="Foto de perfil">
-                                <div class="profile-acount"></div>
-                                <div class="profile-name"></div>
-                                <div class="profile-username"></div>
-
-                                <div class="profile-bio"></div>
-                                <div class="profile-location"></div>
-                                <div class="profile-website"></div>
-                                </div> 
-                                <!--****************************************************-->
-                                <!--****************************************************-->
-                             
-                                <div class="panel-body">Panel Body</div>
-                                <!--  <div class="panel-footer">Panel Footer</div>  -->
-                             
-                             </div>
-
-
-
-                        </div>
-
-
-
-                      </div>
-
-
-
-<div class="container-fluid">
+ <input class="input-circle input-circle1" type="radio" id="circle1" >
+ <input class="input-circle input-circle2" type="radio" id="circle2" >
+ <input class="input-circle input-circle3" type="radio" id="circle3" >
+ <input class="input-circle input-circle4" type="radio" id="circle4" >
+ <input class="input-circle input-circle5" type="radio" id="circle5" >
+ <input class="input-circle input-circle6" type="radio" id="circle6" >
+ <br>
+ <br>
+ <center><font color="black" size="64"><h1>CAW Soon!</h1></font></center>
+ <br>
+ <br>
   
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-    <li><a data-toggle="tab" href="#menu1">Post</a></li>
-    <li><a data-toggle="tab" href="#menu2">Profile 2</a></li>
-    <li><a data-toggle="tab" href="#menu3">MyCaws</a></li>
-  </ul>
 
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      <h3>HOME</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <div id="menu1" class="tab-pane fade">
-      <h3>Menu 1</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <div id="menu2" class="tab-pane fade">
-      <h3>Menu 2</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-    </div>
-    <div id="menu3" class="tab-pane fade">
-      <h3>Menu 3</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </div>
-  </div>
+  <center><h3 style="margin-left: 10px; display: inline-block;"><img src="static/images/caw_logo_2.svg" alt="My svg_logo" width="275" style="transform: rotate(0deg);"></h3></center>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <center><font color="white"><div id="timer" style="font-size: 72px; font-family: 'Digital-7', sans-serif;"></div>
+  </font></center>
+
+  <br>
+  <br>
+
+  <select id="country-selector" onchange="showLanguage()">
+  <option value="none" selected disabled>Selecciona un país</option>
+  
+  <option value="Español">Español</option>
+  <option value="Ingles">Ingles Unidos</option>
+  <option value="japan">Japón</option>
+  <option value="china">China</option>
+  <option value="korea">Corea</option>
+  <option value="turkey">Turquía</option>
+  <option value="germany">Alemania</option>
+  <option value="others">Otros</option>
+</select>
+
+<div style="width:50%;">
+<p id="language-text"></p>
 </div>
 
 
-                  </div>     
-                   
 
-
-
-                  
-
-
-
-
-
-
-
-
-       <div class="container">
-
-     
+  <label for="circle1" class="pajaro pajaro1"><span></span></label>
+  <label for="circle2" class="pajaro pajaro2"><span></span></label>
+  <label for="circle3" class="pajaro pajaro3"><span></span></label>
+  <label for="circle4" class="pajaro pajaro4"><span></span></label>
+  <label for="circle5" class="pajaro pajaro5"><span></span></label>
+  <label for="circle6" class="pajaro pajaro6"><span></span></label>
+          
    
-
-      
-     
-     
-    
-
-
-
-
-
-        <div id="success-message"></div>
-      <div id="error-message"></div>   
-
-
-
-
-
-                </div>
-            </div>
-            
-
-
-
-
-
-
-            <div class="col-sm-3">
-                <div class="well">
-                    <h2>Columna 3</h2>
-                    <p>Contenido de la tercera columna.</p>
-                </div>
-            </div>
-
-            
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ############## ventana emergente Mintear NFTusernameCAW ###########################-->
-<!-- #################################################################################-->
-<!-- #####################################################################-->
-<!-- #####################################################################-->
-<!-- #####################################################################-->
-<!-- #####################################################################-->
-<div class="container"> 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          
-
-            <div class="profile-form">
-            <center> <h3>Crear NFTUsername</h3> </center>
-              
-
-
-          </div>
-
-          </div>
-        <div class="modal-body">
-
-
-          <center>
-            <input type="text" id="text-mintear-nft"  placeholder="Username" required/> 
-            <br>           
-            <button id="btn-mintear-nft">Mintear NFT</button>
-           
-          </center>  
-
-          <p id= "Minted_username"></p>
-            
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        </div>
-      </div>      
-    </div>
-  </div>  
 </div>
-<!-- #####################################################################-->
-<!-- #####################################################################-->
-<!-- #####################################################################-->
-<!-- #####################################################################-->
-<!-- #####################################################################-->
-<!-- #####################################################################-->
 
-<!-- ############## ventana emergente crear un perfil ###########################-->
-<!-- #################################################################################-->
-<div class="container"> 
-  <!-- Modal -->
-  <div class="modal fade" id="myModalprofile" role="dialog">
-    <div class="modal-dialog">    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                     
-           
-           <br>    
-        
-         <div class="profile-form">
-            <h2>Crear Perfil de Usuario</h2>           
-               <input type="text" id="nombre" placeholder="Nombre" required>                      
-              <textarea id="bio" placeholder="Biografía" required></textarea>
-              <input type="text" id="ubicacion" placeholder="Ubicación">
-              <input type="text" id="pagina-web" placeholder="Página Web">
-              <br>
-              <input type="text" id="foto-perfil" placeholder="link to profile picture">
-              
-              <br>
-              <input type="text" id="foto-portada" placeholder="link to cover picture ">
-              <br>
-              <center><button onclick="createProfile()">Guardar Perfil</button></center>
-               
-       </div>
 
-        </div>
-        <div class="modal-body">
-                      
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        </div>
-      </div>      
-    </div>
-  </div>  
-</div>
-<!-- #####################################################################-->
-<!-- #####################################################################-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-  glyphicon glyphicon-cog
-    
-
-      glyphicon glyphicon-picture
-
-        glyphicon glyphicon-plus-sign
-          glyphicon glyphicon-heart-empty
-            glyphicon glyphicon-send
-              glyphicon glyphicon-heart
-                glyphicon glyphicon-th-list
-                  
-                    glyphicon glyphicon-refresh
-
-                      glyphicon glyphicon-qrcode
-                      glyphicon glyphicon-map-marker
-                        glyphicon glyphicon-retweet
-
--->
-    
-
-
-        <!-- Puedes agregar más elementos según sea necesario -->
-  
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
-<script>  
-           const CAW_tokenABI = [{"inputs":[{"internalType":"address","name":"contractAddress","type":"address"}],"name":"authorizeContract","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"contractAddress","type":"address"}],"name":"revokeAuthorization","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"address","name":"user","type":"address"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}];
-          
-          const NFT_ContractABI=[{"constant":true,"inputs":[{"name":"user","type":"address"}],"name":"getCawBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"},{"name":"user","type":"address"}],"name":"burnCaw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"username","type":"string"}],"name":"isMinted","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"owner","type":"address"},{"name":"nftUsername","type":"string"}],"name":"isNFTOwner","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"username","type":"string"}],"name":"getMintingCost","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":true,"inputs":[{"name":"username","type":"string"}],"name":"validateUsername","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":true,"inputs":[{"name":"walletAddress","type":"address"}],"name":"getMintedUsernames","outputs":[{"name":"","type":"string[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"to","type":"address"},{"name":"username","type":"string"}],"name":"transferNFT","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"username","type":"string"},{"name":"price","type":"uint256"}],"name":"sellNFT","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"username","type":"string"}],"name":"cancelNFTSale","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"username","type":"string"}],"name":"buyNFT","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"username","type":"string"}],"name":"mintNFT","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_cawContractAddress","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"username","type":"string"}],"name":"NFTMinted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"username","type":"string"},{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"}],"name":"NFTTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"username","type":"string"},{"indexed":false,"name":"price","type":"uint256"}],"name":"NFTForSale","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"username","type":"string"},{"indexed":true,"name":"buyer","type":"address"},{"indexed":false,"name":"price","type":"uint256"}],"name":"NFTSold","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"username","type":"string"}],"name":"NFTSaleCancelled","type":"event"}]; 
-
-          const PROFILE_ContractABI=[{"inputs":[{"internalType":"string","name":"username","type":"string"},{"internalType":"string","name":"profileJson","type":"string"}],"name":"createProfile","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"username","type":"string"}],"name":"updateProfile","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"username","type":"string"}],"name":"deleteProfile","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"username","type":"string"}],"name":"getProfile","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"username","type":"string"}],"name":"profileExists","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"username","type":"string"}],"name":"isNFTMinted","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"string","name":"nftUsername","type":"string"}],"name":"checkNFTOwnership","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"username","type":"string"}],"name":"isProfileOwner","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"}];
-
-          // Constantes y variables globales
-          const tokenContractAddress = '0x4F024804734fcaECb4f454676998211675F84C89';
-          const nftContractAddress = '0x5F60A07d7cb17226817464f7cAbC363547C5cf89';
-          const profileContractAddress = '0x84D335fc664e6b884130E415944e598042658116';
-         
-
-          const web3 = new Web3(window.ethereum);
-          const tokenContract = new web3.eth.Contract(CAW_tokenABI, tokenContractAddress);
-         
-
-          // Función para conectar con MetaMask
-          async function conectarMetaMask() {
-            if (typeof window.ethereum === 'undefined') {
-              showError('MetaMask no está instalado. Por favor, instala MetaMask.');
-              return;
-            }
-
-            try {
-              await window.ethereum.enable();
-              // Crear una instancia de web3 con MetaMask como proveedor
-              const web3 = new Web3(window.ethereum);
-              const accounts = await web3.eth.getAccounts();
-              const myAddress = accounts[0];
-
-              showSuccess('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
-
-              // Obtener el saldo automáticamente al conectarse
-              obtenerSaldo();
-              //obtienen los nft minteados
-              getmintedNFT();
-
-                    
-
-              // Otros botones y acciones
-
-              const btnObtenerSaldo = document.getElementById('btn-obtener-saldo');
-              btnObtenerSaldo.addEventListener('click', obtenerSaldo);
-
-              const btnAprobarContrato = document.getElementById('btn-aprobar-contrato');
-              btnAprobarContrato.addEventListener('click', aprobarContrato);
-
-              const btnMintearNFT = document.getElementById('btn-mintear-nft');
-              btnMintearNFT.addEventListener('click', mintearNFT);
-
-              const btngetNFT = document.getElementById('btn-get-nft');
-              btngetNFT.addEventListener('click', getmintedNFT);
-
-              ///////////////////////profile user//////////////////////////////////
-              //const btnCreateProfile = document.getElementById('btn-create-profile');
-              //btnCreateProfile.addEventListener('click', createProfile);
-
-              //const btnEditProfile = document.getElementById('btn-create-profile');
-              //btnEditProfile.addEventListener('click', editProfile);
-
-              //const btngetProfile = document.getElementById('btn-get-profile');
-              //btnEditProfile.addEventListener('click', getProfile);
-              ////////////////////////////////////////////////////////////////////////////
-
-            
-
-              // ...
-            } catch (error) {
-              showError('Hubo un error al conectar con MetaMask1: ' + error.message);
-            }
-          }
-
-
-
-
-          // Función para obtener el saldo del token
-          async function obtenerSaldo() {
-            // Obtener la dirección de la cuenta conectada
-            const accounts = await web3.eth.getAccounts();
-            const myAddress = accounts[0];
-            alert('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
-
-
-            //obtiene el saldo en ether de la cuenta
-            // Obtener el saldo en Wei (la unidad más pequeña de Ethereum)
-            const balanceWei = await web3.eth.getBalance(myAddress);
-            // Convertir el saldo de Wei a Ether
-            const balanceEther = web3.utils.fromWei(balanceWei, 'ether');
-            // Truncar los últimos decimales (dejar solo dos decimales, por ejemplo)
-            const truncatedBalanceEther = parseFloat(balanceEther).toFixed(6);
-            // Mostrar el saldo en la página web
-            const saldoElementETH = document.getElementById('saldo_ETH');
-            saldoElementETH.innerText = 'ETH ' + truncatedBalanceEther;
-            saldoElementETH.style.color = 'Magenta';
-      
-
-
-
-
-            // Crear una instancia del contrato del token
-            const tokenContract = new web3.eth.Contract(CAW_tokenABI,tokenContractAddress);
-            // Obtener el saldo del token para la dirección de la cuenta conectada
-            const accountBalance = await tokenContract.methods.balanceOf(myAddress).call();
-            // Convertir el saldo a una cadena
-            const balanceString = accountBalance.toString();
-            // Obtener los primeros dígitos (de 0 a longitud - 18)
-            const truncatedBalance = balanceString.slice(0, -18);
-            // Mostrar el saldo en la página web
-            const saldoElement = document.getElementById('saldo_CAW');
-            saldoElement.innerText = 'CAW ' + truncatedBalance;
-            saldoElement.style.color = 'yellow';
-
-
-      
-            
-            const addres_walletElement = document.getElementById('addres-wallet');
-            addres_walletElement.innerText = '' + myAddress;  // Puedes personalizar el valor
-            addres_walletElement.style.color = 'white';
-            
-            
-          }
-
-
-           // Función para aprobar un contrato
-          async function aprobarContrato() {
-            // Obtener la dirección de la cuenta conectada
-            const accounts = await web3.eth.getAccounts();
-            const myAddress = accounts[0];
-            alert('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
-
-            // Aprobar el contrato
-            // Cantidad de aprobación en wei
-            //const approvalAmount = web3.utils.toWei('100', 'ether');
-            // Obtener la instancia del contrato
-            const contract = new web3.eth.Contract(CAW_tokenABI, tokenContractAddress);
-
-            try {
-              await contract.methods.authorizeContract(nftContractAddress).send({ from: myAddress });
-              alert('Contrato aprobado exitosamente:');
-              console.log('Contrato aprobado exitosamente.');
-            } catch (error) {
-              alert('Error al aprobar el contrato');
-              console.error('Error al aprobar el contrato:', error);
-            }
-
-           
-          }
-
-
-
-
-          // Función para mintear un NFT
-          async function mintearNFT() {
-            // Obtener la dirección de la cuenta conectada
-            const accounts = await web3.eth.getAccounts();
-            const myAddress = accounts[0];
-            alert('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
-            
-            const contract = new web3.eth.Contract(NFT_ContractABI, nftContractAddress);
-            // Mintear el NFT
-            const nftusername = document.getElementById('text-mintear-nft').value;
-            // ...
-            try {
-              await contract.methods.mintNFT(nftusername).send({ from: myAddress });
-              alert('NFT Minteado exitosamente:');
-              console.log('NFT Minteado exitosamente.');
-                // Mostrar mensaje de éxito
-              showSuccess('NFT minteado correctamente.');
-            } catch (error) {
-              alert('Error al mintear el NFT');
-              console.error('Error al mintear el NFT:', error);
-            }
-
-          
-          }
-
-
-          // Función para mintear un NFT
-          async function getmintedNFT() {
-            // Obtener la dirección de la cuenta conectada
-            const accounts = await web3.eth.getAccounts();
-            const myAddress = accounts[0];
-            alert('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
-            
-            const contract = new web3.eth.Contract(NFT_ContractABI, nftContractAddress);
-            // Mintear el NFT
-            // ...
-            try {
-              const list_username = await contract.methods.getMintedUsernames(myAddress).call();  
-
-              
-              const selector = document.getElementById('selector_NFTs');
-              // Limpiar las opciones existentes
-              selector.innerHTML = '';
-              // Agregar las opciones de NFTs
-              for (const nft of list_username) {
-                const option = document.createElement('option');
-                option.text = nft;
-                selector.add(option);
-              }
-
-
-
-
-
-          // Función para crear un perfil
-          async function createProfile() {
-            // Obtener la dirección de la cuenta conectada
-            const accounts = await web3.eth.getAccounts();
-            const myAddress = accounts[0];
-            //alert('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
-            const contract = new web3.eth.Contract(PROFILE_ContractABI, profileContractAddress);
-           
-            try {
-
-              /////////////////////////datos del perfel convertido a json/////////////////////////
-              // Obtener los valores de los campos del formulario
-              const nombre = document.getElementById('nombre').value;
-              const bio = document.getElementById('bio').value;
-              const ubicacion = document.getElementById('ubicacion').value;
-              const paginaWeb = document.getElementById('pagina-web').value;
-              const selectorNFTs = document.getElementById('selector_NFTs').value;
-              const nftusername = selectorNFTs.replace('@CAW', '');
-
-              const fotoPerfil = document.getElementById('foto-perfil').value;
-              const fotoPortada = document.getElementById('foto-portada').value;
-
-              // Crear un objeto FormData para enviar los datos y las imágenes
-              const formData = new FormData();
-              formData.append('nombre', nombre);
-              formData.append('bio', bio);
-              formData.append('ubicacion', ubicacion);
-              formData.append('paginaWeb', paginaWeb);
-              formData.append('fotoPerfil', fotoPerfil);
-              formData.append('fotoPortada', fotoPortada);
-
-              // Convertir el objeto FormData a un objeto JSON
-              const perfil = {};
-              for (let [key, value] of formData.entries()) {
-                perfil[key] = value;
-              }
-
-              // Convertir el objeto JSON a una cadena
-              const perfilJSON = JSON.stringify(perfil);
-              ////////////////////////////////////////////////////////////////////////////////////
-              alert('perfil: ' + perfilJSON);
-              alert('perfil: ' + nftusername);
-
-              await contract.methods.createProfile(nftusername,perfilJSON).send({ from: myAddress });
-             
-              alert('Funcion create profile OK :');
- //             console.log('Funcion list NFTs OK.');
-               // Mostrar mensaje de éxito
- //             showSuccess('Funcion list NFTs OK.');
-            } catch (error) {
-              alert('Error Create profile');
-//              console.error('Error list NFT:', error);
-            }
-          }
-
-
-          // Obtener el selector de NFTs
-          const selectorNFTs = document.getElementById('selector_NFTs');
-          // Agregar evento 'change' al selector
-          selectorNFTs.addEventListener('change', () => {
-                   getProfile();
-          });
-
-
-
-
-
-          // Función para poner los datos de un perfil
-          async function getProfile() {
-            // Obtener la dirección de la cuenta conectada
-            const accounts = await web3.eth.getAccounts();
-            const myAddress = accounts[0];
-            //alert('Conectado con éxito a MetaMask. Dirección de la cuenta: ' + myAddress);
-            const contract = new web3.eth.Contract(PROFILE_ContractABI, profileContractAddress);
-           
-            const selectorNFTs = document.getElementById('selector_NFTs').value;
-            const nftusername = selectorNFTs.replace('@CAW', '');
-          
-            try {
-              const profileText = await contract.methods.getProfile(nftusername).call();    
-              
-              profile = JSON.parse(profileText);// Parsea la cadena de texto JSON a un objeto JavaScript
-
-              alert('getprofile dice: ' + profile);
-
-              // Actualizar los elementos del perfil con los datos obtenidos
-              const profileContainer = document.querySelector('.profile-container');
-              const profilePhoto = profileContainer.querySelector('.profile-photo');
-              const profileCover = profileContainer.querySelector('.profile-cover');
-              const profileName = profileContainer.querySelector('.profile-name');
-              const profileBio = profileContainer.querySelector('.profile-bio');
-              const profileLocation = profileContainer.querySelector('.profile-location');
-              const profileWebsite = profileContainer.querySelector('.profile-website');
-              
-              const profileUsername = profileContainer.querySelector('.profile-username');
-              const profileAcount = profileContainer.querySelector('.profile-acount');
-             
-              profilePhoto.src = profile.fotoPerfil;
-              profileCover.src = profile.fotoPortada;
-              profileName.textContent = profile.nombre;
-              profileBio.textContent = profile.bio;
-              profileLocation.textContent = profile.ubicacion;
-              profileWebsite.textContent = profile.paginaWeb;
-
-              profileUsername.textContent = selectorNFTs;
-              profileAcount.textContent = myAddress;
-            
-              alert('Funcion get profiel OK :');
- //             console.log('Funcion list NFTs OK.');
-               // Mostrar mensaje de éxito
- //             showSuccess('Funcion list NFTs OK.');
-            } catch (error) {
-              alert('Error get profile');
-              console.error('Error list NFT:', error);
-//              console.error('Error list NFT:', error);
-            }
-
-          
-          }                        
-              alert('Funcion list NFTs OK :');
-              console.log('Funcion list NFTs OK.');
-                // Mostrar mensaje de éxito
-              showSuccess('Funcion list NFTs OK.');
-            } catch (error) {
-              alert('Error list NFT');
-              console.error('Error list NFT:', error);
-            }
-
-          
-          }
-
-
-           
-
-
-         
-         
-
-
-          // Funciones para mostrar mensajes en la página
-
-           function showSuccess(message) {
-            const successElement = document.getElementById('success-message');
-            successElement.innerText = message;
-          } 
-          function showSuccess(message) {
-            const successElement = document.getElementById('success-message');
-            successElement.innerText = message;
-          }
-
-          function showError(message) {
-            const errorElement = document.getElementById('error-message');
-            errorElement.innerText = message;
-          }
-
-          function showBalance(balance) {
-            const balanceElement = document.getElementById('saldo');
-            balanceElement.innerText = 'Saldo: ' + balance;
-          }
-
-          // Otros botones y acciones
-          // ...
-
-
-
-
-</script>
-   
-
-<script src="bootstrap/js/jquery.min.js" ></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-
+<script>
+function showLanguage() {
+  const countrySelector = document.getElementById('country-selector');
+  const languageText = document.getElementById('language-text');
+
+  const selectedCountry = countrySelector.value;
+  let text = '';
+
+
+
+  switch (selectedCountry) {
+    case 'Español':
+      text = 'Estamos desarrollando CAW PROTOCOL, una red social descentralizada basada en la web 3. Buscamos apoyo financiero para seguir innovando y garantizar la seguridad, transparencia y privacidad en la plataforma. Cualquier contribución será fundamental para hacer realidad este proyecto';
+      break;
+    case 'Ingles':
+      text = 'English is spoken in the United States.';
+      break;
+    case 'japan':
+      text = 'In Japan, Japanese is the primary language.';
+      break;
+    case 'china':
+      text = 'Chinese is the most spoken language in China.';
+      break;
+    case 'korea':
+      text = 'Korean is spoken in South Korea.';
+      break;
+    case 'turkey':
+      text = 'The official language in Turkey is Turkish.';
+      break;
+    case 'germany':
+      text = 'In Germany, German is the main language.';
+      break;
+    case 'others':
+      text = 'Please select a country to know its language.';
+      break;
+    default:
+      text = '';
+  }
+
+  languageText.textContent = text;
+}
+ </script>>
 
 
 </body>
