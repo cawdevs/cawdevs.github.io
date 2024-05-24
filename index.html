@@ -32,12 +32,12 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             display:inline-block;
-            margin-left: 10px;
+            margin-left: 40px;
         }
 
         .boton-conectar:hover {
-            background-color: yellow;
-            border-color: yellow;
+            background-color: gold;
+            border-color: gold;
             display:inline-block;
 
         }
@@ -65,14 +65,34 @@
 <br>
  
  <center>  <div>
-    <img src="images/caw_logo_2.svg" alt="My svg_logo" width="60" class="img-circle" style="transform: rotate(0deg); display: inline-block; border: 4px solid white;">
-    <h2 style="display: inline-block; margin: 0; vertical-align: middle; margin-left: 10px;"><font color="white"> XCaw </font> </h2>
-    <button class="boton-conectar" id="btn-conectar" onclick="conectarMetaMask()" style="display: inline-block; margin-left: 10px;">Conectar</button>
+    <img src="images/caw_logo_2.svg" alt="My svg_logo" width="45" class="img-circle" style="transform: rotate(0deg); display: inline-block; margin-left: 10px;border: 2px solid white;">
+   
+    <h3 style="display: inline-block; margin: 0; vertical-align: middle; margin-left: 10px;"><font color="white"><i> XCaw </i></font> </h3>
+<i class="fa-brands fa-github" style="color: #FFD43B;"></i>
+
+     <a  href="whiteDocument.html" target="_blank" ><h5 style="display: inline-block; margin: 0; vertical-align: middle; margin-left: 20px;"><font color="gold"><i> White Document </i></font> </h5></a>
+
+    
+
+     <a href="https://github.com/cawdevs" target="_blank" rel="noopener noreferrer"> <img src="images/logo G.SVG" alt="My svg_logo" width="25"  style="transform: rotate(0deg); display: inline-block; margin-left: 20px; ">
+     </a>
+
+     <a href="https://x.com/cawdevs" target="_blank" rel="noopener noreferrer"> <img src="images/logo X.svg" alt="My svg_logo" width="25"  style="transform: rotate(0deg); display: inline-block; margin-left: 20px; ">
+     </a>
+
+      	
+    <button class="boton-conectar" id="btn-conectar" onclick="conectarMetaMask()" style="display: inline-block; margin-left: 20px;">Conect</button>
+
+
+
+
+
+
  </div></center>
 
 
     <center><div>   
-   <h4>
+   <h5>
     <div style="display:inline-block;" id= "addres-wallet"><font color="white"></font></div>
 
 
@@ -91,9 +111,11 @@
     <!-- <a class="btn btn-primary  btn-xs" role="button" onclick="myFunctionbtc()" onmouseout="outFuncbtc()" ><font color="white" size="5"> <span class="tooltiptext" id="myTooltipbtc">Copiar btc wallet</span></font></a>
      -->    
 
-   </h4>
+   </h5>
  </div></center> 
 
+
+<br>
 
 <div class="container-fluid">
 <div class="row">
@@ -103,20 +125,22 @@
           
  <div class="col-sm-6">                    
        <!--  <div class="well" style="background: linear-gradient(45deg, black, yellow);">  -->
-       <div class="well" style="border: 4px solid gold; border-radius: 20px;">
+       <div class="well" style="border: 2px solid gold; background: black; border-radius: 20px;">
                     <!--<div style="background: red; width:90px; height: 50px; display: inline-block; margin-top: 50px;"></div>  -->
 
                     <h4> 
-                      <p style="display:inline-block;"> CAW</p>
+                      <p style="display:inline-block;"><font color="yellow"> CAW</font></p>
      <div style="display:inline-block;" id="saldo_CAW"><font color="black"></font></div>
      <div style="display:inline-block;" > </div>
      <div style="display:inline-block;" > </div>
-     <p style="display:inline-block;">ETH</p>
+     <p style="display:inline-block;"><font color="#8247E5">Polygon</font></p>
      <div style="display:inline-block;" id="saldo_ETH"><font color="Magenta "></font></div>
      <div style="display:inline-block;" > </div>
      <div style="display:inline-block;" > </div>
      <a href="#" style="display:inline-block;" id="btn-obtener-saldo"><font color="black"><span class="glyphicon glyphicon-refresh"></span></font></a>
      <div style="display:inline-block;" > </div>
+
+          <button class="boton-conectar" id="btn-caw-free" onclick="tokensFree('CAW')" style="display: inline-block; margin-left: 10px;">Claim 1,500,000 CAW FREE</button>      
 
   
  
@@ -125,7 +149,7 @@
     </h4>
 
 
-<nav class="navbar navbar-inverse" role="navigation" style="border: 4px solid gold; border-radius: 20px; background:black;">
+<nav class="navbar navbar-inverse" role="navigation" style="border: 2px solid white; border-radius: 20px; background:black;">
   <div class="container-fluid">
      <div class="container-fluid">
           
@@ -143,12 +167,12 @@
    </a>
   
    <div class="navbar-brand">
-        <select id="selector_NFTs" class="form-control" placeholder="Username@CAW" style="border: 4px solid gold; border-radius: 10px; margin-left: 10px; font-size: 16px; height: auto;"></select>
+        <select id="selector_NFTs" class="form-control" placeholder="Username@CAW" style="border: 2px solid gold; border-radius: 10px; margin-left: 10px; font-size: 16px; height: auto;"></select>
       
    </div>    
 
         <div class="navbar-brand">
-        <a href="#" data-toggle="modal" data-target="#myModal_publication"><font color="gold"><span class=" glyphicon glyphicon-plus-sign" style="font-size: 40px; vertical-align: middle; margin-left: 5px"></span></font></a> 
+        <a href="#" data-toggle="modal" data-target="#myModal_publication"><font color="gold"><span class=" glyphicon glyphicon-plus-sign" style="font-size: 30px; vertical-align: middle; margin-left: 5px"></span></font></a> 
        </div>
        
    </div>
@@ -171,7 +195,7 @@
 
  
 
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: lightgray; border: 2px solid white; border-radius: 20px;">
   
   
   <ul class="nav nav-tabs">
@@ -230,6 +254,10 @@ span.hashtag {
     <div id="menu1" class="tab-pane fade">
    <!--****************************************************-->
                                 <!--****************************************************-->
+  
+
+
+
   <style>
     /* Estilos CSS para el perfil */
     .profile-container {
@@ -291,11 +319,15 @@ span.hashtag {
     }
   </style>
 
-                                <div class="profile-container" style= "display: none;">
-                             
+                     <div class="profile-container" style= "display: none;">
+                           
+                             <div>
                                 <img class="profile-cover" src="" alt="Foto de portada">
                                 <img class="profile-photo" src="" alt="Foto de perfil">
-                                
+                             </div>                        
+
+
+
                                 <div class="profile-acount"></div>
 
                                 <div style="display:inline-block;" class="profile-name"></div>
@@ -460,7 +492,8 @@ span.hashtag {
 
 
             <div class="col-sm-4">
-                <div class="well" style="border: 4px solid gold; border-radius: 20px;">
+               
+                <div class="well" style="border: 2px solid gold; background: black; border-radius: 20px;">
 
                      
                           <div class="input-group">
@@ -502,79 +535,14 @@ span.hashtag {
                     
                 </div>     
 
-                 <div class="well" style="border: 4px solid gold; border-radius: 20px;">
-                                                               
-                    
-                     
+                   
 
-     <a href="#" onclick="tokensFree('CAW')" style="display:inline-block;"><font color="black"><span class="glyphicon glyphicon-star"></span>CAW</font></a>
-     
-     <div style="display:inline-block; margin-left: 20px;" > </div>
-     
-     <a href="#" onclick="tokensFree('ETH')" style="display:inline-block;"><font color="black"><span class="glyphicon glyphicon-star"></span>ETH</font></a>
-
-
-    <!-- enviar ether a alguien-->
-    <!--  ###############################-->
-    <!--  ###############################-->
-    <!--  ###############################-->
-    <div class="input-group">
-                            <input type="text" id="text-address-to-send-ETH" class="form-control" placeholder="enter a 0x.. to send ETH" style="border: 2px solid black; border-radius: 20px; width: 100%; height: 40px; margin-right: 10px;">
-                            <div class="input-group-btn">
-                              <button id="btn-send-ETH-wallet" class="btn btn-default" onclick="sendETHtowallet()" style="background-color: black; color: white; border: 2px solid gold; border-radius: 20px; height: 40px;">
-                                <span class="glyphicon glyphicon-send"></span>
-                              </button>                             
-                            </div>
-                          </div>
-
-    <!--  ###############################-->
-    <!--  ###############################-->
-    <!--  ###############################--> 
-
-    <br>
-
-    <p> This trial ETHER and CAW is free for you and your friends.</p>
-<p>
-If you have less than 0.005 ETH goerli, press *ETH and receive 0.01 Ether goerli
-</p>
-
-
-<p>
-If you have 0 caw press *CAW and receive 2,000,000 CAW for free (You need to have ETHER goerli to pay the transaction) </p>
-
-<p>
-Enter a friend's address and send them 0.01 Goerli ether by pressing the button 
-</p>
-
-<p>
-You can get Ether Goerli at these places.
-</p>
-
-<a href="https://goerlifaucet.com">https://goerlifaucet.com</a>
-
-<a href="https://goerli-faucet.pk910.de">https://goerli-faucet.pk910.de/</a>
-
-    </p>
-
-    
-
-
-          
-                         
-                          
-                         
-                    
-                </div>        
-
-                  <div class="well" style="border: 4px solid gold; border-radius: 20px;">
-                     
-                                      
-                      
-                           
+                  <div class="well" style="border: 2px solid gold;  border-radius: 20px;">
+                                             
+                                                 
                            <div id="success-message"></div>
                            <div id="error-message"></div>   
-                         
-                    
+                                         
                 </div>               
 
 
@@ -1112,38 +1080,28 @@ You can get Ether Goerli at these places.
 
 
 <script>  
-      //cawtoken    0x548565A89B46884daC122831Cea1AFB56cF21A2a
-//nftusername 0xe18F13790B695e6EB6b8dC14ac534aa68c88A3e8
-//stakingpool 0x29d72b8D996e2b7d9F9B419695dE6a427c2ef240
-//transfercontract 0x90157dF8DB029CEB5bec29822FaDd725b2f25229 
-//profilecontract 0x8F52A8843AbF1AF81Bb39693071f2bb4D87fe74a
-//publishercontract 0xdBD32C4EF33D100091A77c361b24E21F6a291898 
-//directmsgcontract 0xB0c77a6B822eE289d54Df875A8D3a8778DEE8Fa3 
-//fredistribution 0x078B315F1f1a4ebB287D4343d7416eA9c2C58f2F
-
 
 
 
           const CAW_tokenABI =[{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"spender","type":"address"},{"name":"owner","type":"address"}],"name":"allowance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"contractAddress","type":"address"}],"name":"authorizeContract","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"},{"name":"user","type":"address"}],"name":"burn","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"spender","type":"address"},{"name":"value","type":"uint256"}],"name":"approve","outputs":[],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"amount","type":"uint256"}],"name":"approveCAWTransfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"revokeAuthorization","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"contractAddress","type":"address"}],"name":"authorizeContract","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"amount","type":"uint256"}],"name":"approveCAWTransfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"contractAddress","type":"address"}],"name":"onlyAuthorizedContract","outputs":[],"payable":false,"stateMutability":"view","type":"function"}]
-//const tokenContractAddress = '0x2380f31677BEcD506699e3a173E6A1C44E8B16d7';
-//const tokenContractAddress = '0x548565A89B46884daC122831Cea1AFB56cF21A2a';
-const tokenContractAddress = '0x07CF2571ee214129D436F489625967709E6704ad';
+
+const tokenContractAddress = '0x1de5b7fa5de338c7a3b84840b404813feaadb8ab';//polygon  
+
 
 
 
 const NFT_ContractABI=[{"constant":true,"inputs":[{"name":"user","type":"address"}],"name":"getCawBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"nftUsername","type":"string"}],"name":"isMinted","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"owner","type":"address"},{"name":"nftUsername","type":"string"},{"name":"caller","type":"address"}],"name":"isNFTOwner","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"walletAddress","type":"address"}],"name":"getMintedUsernames","outputs":[{"name":"","type":"string[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"nftUsername","type":"string"}],"name":"getNFTOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"username","type":"string"}],"name":"validateUsername","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":true,"inputs":[{"name":"username","type":"string"}],"name":"getMintingCost","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":false,"inputs":[{"name":"username","type":"string"}],"name":"mintNFT","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"to","type":"address"},{"name":"username","type":"string"}],"name":"transferNFT","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"username","type":"string"},{"name":"price","type":"uint256"}],"name":"sellNFT","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"username","type":"string"}],"name":"cancelNFTSale","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"username","type":"string"}],"name":"buyNFT","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"user","type":"address"}],"name":"getEtherBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"walletAddress","type":"address"}],"name":"getNFTUsername","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"username","type":"string"}],"name":"getHashFromUsername","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"hash","type":"bytes32"}],"name":"getUsernameFromHash","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"startIndex","type":"uint256"},{"name":"endIndex","type":"uint256"}],"name":"getUsernamesInRange","outputs":[{"name":"","type":"string[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"tokenId","type":"uint256"}],"name":"getUsernameByTokenId","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getTotalMintedNFTs","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"username","type":"string"}],"name":"isNFTForSale","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getNftIsForSaleCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"tokenId","type":"uint256"}],"name":"getNFTInfoById","outputs":[{"components":[{"name":"tokenId","type":"uint256"},{"name":"username","type":"string"},{"name":"isMinted","type":"bool"},{"name":"isForSale","type":"bool"},{"name":"price","type":"uint256"},{"name":"usernameHash","type":"bytes32"},{"name":"timestamp","type":"uint256"}],"name":"","type":"tuple"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"username","type":"string"}],"name":"getNFTInfoByUsername","outputs":[{"components":[{"name":"tokenId","type":"uint256"},{"name":"username","type":"string"},{"name":"isMinted","type":"bool"},{"name":"isForSale","type":"bool"},{"name":"price","type":"uint256"},{"name":"usernameHash","type":"bytes32"},{"name":"timestamp","type":"uint256"}],"name":"","type":"tuple"}],"payable":false,"stateMutability":"view","type":"function"}];
 
 
-//const nftContractAddress = '0xB50A6f6ddEa4a73A7Bf30AAE29985101B6C8aDC3';
-//const nftContractAddress = '0xe18F13790B695e6EB6b8dC14ac534aa68c88A3e8';
-const nftContractAddress = '0xA4Ae8E4dB011f7aa77A8ad0Ac1Fb6A2927a6A154';
+
+const nftContractAddress = '0xc9c20fb801af6940b35f0d12cc489da2cdc647d1';//polygon  
+
 
 
 
 const Transfer_ContractABI=[{"constant":false,"inputs":[{"name":"senderNFTUsername","type":"string"},{"name":"receiverNFTUsername","type":"string"},{"name":"userTimestamp","type":"uint256"},{"name":"signatureToUser","type":"bytes32"},{"name":"typeAction","type":"string"}],"name":"actionTransfer","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"nftUsername","type":"string"}],"name":"checkNFTOwnership","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"cawTokenAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"cawContractStaking","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"nftContractAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"nftUsername","type":"string"}],"name":"isNFTMinted","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getNFTUsername","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"cawTokenAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"user","type":"address"}],"name":"getCawBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}];
-//const transferContractAddress = '0xf679810c5744b255d258E6303410aDeC5ee9Cf89';
-//const transferContractAddress = '0x90157dF8DB029CEB5bec29822FaDd725b2f25229';
-const transferContractAddress = '0xe6578037d3C8d6F46C1DC0F762215F445B250e76';
+
+const transferContractAddress = '0x9582dacf43aa2bf143ac909faa5a718cbca92333';//polygon
 
 
 
@@ -1154,9 +1112,8 @@ const Profile_ContractABI = [{"constant":false,"inputs":[{"name":"username","typ
 
 
 
-//const profileContractAddress = '0x995FA00904D4A7e19De59a209930ACb36FFcED61';
-//const profileContractAddress = '0x8F52A8843AbF1AF81Bb39693071f2bb4D87fe74a';
-const profileContractAddress = '0xFee158eAC5F809aa861F650f43214e52d9453b6d';
+
+const profileContractAddress = '0xa569895d95Eec6F96939c4988e9f0E0e095BbB70'; //polygon
 
 
 
@@ -1165,9 +1122,7 @@ const Publisher_ContractABI=[{"constant":false,"inputs":[{"name":"senderNFTUsern
 
 
 
- //const publisherContractAddress = '0x8f16B046CBF80D3fa325A3dB609410558bBF91Af';
- //const publisherContractAddress = '0x1677Be483baE7418c832087fe90f777EA6A1346c';
-const publisherContractAddress = '0x4848b0Bddf525d9206A9c2846934Ff108f991D7F';
+const publisherContractAddress = '0x54cdc95d8e45b9bde89556ded5fa38a5856a253c';//polygon
 
 
 
@@ -1178,30 +1133,32 @@ const publisherContractAddress = '0x4848b0Bddf525d9206A9c2846934Ff108f991D7F';
 const DirectMessage_ContractABI=[{"constant":false,"inputs":[{"name":"senderNFTHash","type":"bytes32"},{"name":"receiverNFTHash","type":"bytes32"},{"name":"encryptedMessage","type":"bytes"},{"name":"jsonMetadataEncrypted","type":"string"},{"name":"signature","type":"bytes32"}],"name":"sendDirectMessage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"senderNFTHash","type":"bytes32"},{"name":"receiverNFTHash","type":"bytes32"},{"name":"messageId","type":"uint256"}],"name":"markMessageAsDeleted","outputs":[],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"senderNFTHash","type":"bytes32"},{"name":"receiverNFTHash","type":"bytes32"},{"name":"messageId","type":"uint256"}],"name":"markMessageAsNotDeleted","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"senderNFTHash","type":"bytes32"},{"name":"receiverNFTHash","type":"bytes32"},{"name":"messageId","type":"uint256"}],"name":"undeleteAllSenderMessages","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"senderNFTHash","type":"bytes32"},{"name":"receiverNFTHash","type":"bytes32"},{"name":"messageId","type":"uint256"}],"name":"markMessageAsDeleted","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"senderNFTHash","type":"bytes32"},{"name":"receiverNFTHash","type":"bytes32"}],"name":"getConversation","outputs":[{"name":"","type":"bytes[][]"},{"name":"","type":"bytes[][]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"senderNFTHash","type":"bytes32"},{"name":"receiverNFTHash","type":"bytes32"}],"name":"deleteAllSenderMessages","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"senderNFTHash","type":"bytes32"},{"name":"receiverNFTHash","type":"bytes32"},{"name":"messageId","type":"uint256"}],"name":"markMessageAsNotDeleted","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"senderNFTHash","type":"bytes32"},{"name":"receiverNFTHash","type":"bytes32"}],"name":"deleteAllSenderMessages","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"senderNFTHash","type":"bytes32"},{"name":"receiverNFTHash","type":"bytes32"},{"name":"messageId","type":"uint256"}],"name":"undeleteAllSenderMessages","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"nftUsername","type":"string"}],"name":"checkNFTOwnership","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"nftUsername","type":"string"}],"name":"isNFTMinted","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"walletAddress","type":"address"}],"name":"getNFTUsername","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"signer","type":"address"},{"name":"message","type":"bytes"},{"name":"signature","type":"bytes32"}],"name":"verifySignature","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"pure","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"senderNFTHash","type":"bytes32"},{"indexed":true,"name":"receiverNFTHash","type":"bytes32"}],"name":"DirectMessageSent","type":"event"}];
 
   
-  //const directMessageContractAddress = '0x8788069847e513e15588d683a6Bb2Daa8ef2c876';
-  //const directMessageContractAddress = '0xB0c77a6B822eE289d54Df875A8D3a8778DEE8Fa3';
-  const directMessageContractAddress = '0xF863f269c63F033209D7b33d55DC9f84fcA76591';
+  
+const directMessageContractAddress = '0x721ae299de508da89b4f68e28098ff60fde98065'; //polygon
   
     
       
 const StakingPool_ContractABI = [{"constant":true,"inputs":[],"name":"getTotalStaked","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getTotalRewards","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"stakers","outputs":[{"name":"amountStaked","type":"uint256"},{"name":"lastClaimTimestamp","type":"uint256"},{"name":"totalRewardsEarned","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"}],"name":"stake","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"}],"name":"unstake","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"claimRewards","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"staker","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"Staked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"staker","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"Unstaked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"staker","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"RewardsClaimed","type":"event"},{"constant":true,"inputs":[{"name":"stakerAddress","type":"address"}],"name":"calculatePendingRewards","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"stakerAddress","type":"address"}],"name":"getStaker","outputs":[{"name":"amountStaked","type":"uint256"},{"name":"lastClaimTimestamp","type":"uint256"},{"name":"totalRewardsEarned","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]; 
 
-//const stakingPoolContractAddress = '0xcc33EBEdb86835aAde087533DCB8BF0e8725388e';
-//const stakingPoolContractAddress = '0x29d72b8D996e2b7d9F9B419695dE6a427c2ef240';
-const stakingPoolContractAddress = '0x22FF3fFa92826fE730915F602da59dF7739eE955';      
+
+const stakingPoolContractAddress = '0xC6284bBEA6E993Ccf60add9DB1F7AEC644f9aCEa';    //polygon  
 
 FreeTokens_ContractABI = [{"constant":false,"inputs":[],"name":"conectar","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"requestTokensCaw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":false,"inputs":[],"name":"receiveTokensCaw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"obtenerSaldoEtherContrato","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"obtenerSaldoCawContrato","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_receiver","type":"address payable"}],"name":"sendEtherToAddress","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}];
 
-//const freeTokensContractAddress = '0x2172a3388402dAa485FBa9a8Aca258c1E926839b';
-const freeTokensContractAddress = '0xF27792082F04d244Ca6681998010d148a09Fa538';
+
+const freeTokensContractAddress = '0xa0b89d894939e5810849e602a3e3f3e75931b07e';//polygon  
+
 
 
 
           const web3 = new Web3(window.ethereum);     
           const tokenContract = new web3.eth.Contract(CAW_tokenABI, tokenContractAddress);
            
-           showSuccess('The development will not stop! The team is working on the development of the CAW protocol also in a FrontEnd (html, CSS, Js). We are asking for your help to move to the next level. You can collaborate by sending ETHER or CAW to the team official Wallet. Thanks (its voluntary) Feel free to try version X of the protocol.  wallet:  0xc2082E54c173b4ac3e0b29fd677eBbF51de05678 ');
+           showSuccess('The development will not stop! The team is working on the development of the CAW protocol also in a FrontEnd (html, CSS, Js).');
             
+
+
+
 
           // Función para conectar con MetaMask
           async function conectarMetaMask() {
@@ -1211,8 +1168,39 @@ const freeTokensContractAddress = '0xF27792082F04d244Ca6681998010d148a09Fa538';
             }
 
             try {
-              await window.ethereum.enable();
+              
+
+              await window.ethereum.enable();// esta linea va
               // Crear una instancia de web3 con MetaMask como proveedor
+
+
+               //////////////////////////////////////////////////////////////////////
+               // Solicitar la cuenta del usuario
+        		//await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+        		// Definir los parámetros de la red de Polygon (Matic)
+       // 		const polygonNetwork = {
+       //     		chainId: '0x89', // ID de cadena en hexadecimal (137 en decimal)
+       //     		chainName: 'Polygon Mainnet',
+       //     		nativeCurrency: {
+       //         		name: 'MATIC',
+       //         		symbol: 'MATIC',
+       //         		decimals: 18
+       //     		},
+       //     		rpcUrls: ['https://rpc-mainnet.maticvigil.com/'],
+       //     		blockExplorerUrls: ['https://polygonscan.com/']
+       // 		};
+
+        		// Intentar agregar la red de Polygon a MetaMask
+       // 		await window.ethereum.request({
+       //    		method: 'wallet_addEthereumChain',
+       //     		params: [polygonNetwork]
+       // 		});
+
+                ////////////////////////////////////////////////////////////////
+
+
+
               const web3 = new Web3(window.ethereum);
               const accounts = await web3.eth.getAccounts();
               const myAddress = accounts[0];
@@ -1362,7 +1350,9 @@ const freeTokensContractAddress = '0xF27792082F04d244Ca6681998010d148a09Fa538';
             const contract = new web3.eth.Contract(CAW_tokenABI, tokenContractAddress);
 
             try {
-              await contract.methods.authorizeContract(nftContractAddress).send({ from: myAddress });
+              //await contract.methods.authorizeContract(nftContractAddress).send({ from: myAddress });
+  await contract.methods.authorizeContract(nftContractAddress).send({from: myAddress, gas: 200000, gasPrice: web3.utils.toWei('50', 'gwei') });
+
               //alert('Contrato aprobado exitosamente:');
               console.log('Contrato aprobado exitosamente.');
             } catch (error) {
@@ -1390,7 +1380,7 @@ const freeTokensContractAddress = '0xF27792082F04d244Ca6681998010d148a09Fa538';
             const nftusername = document.getElementById('text-mintear-nft').value;
             // ...
             try {
-              await contract.methods.mintNFT(nftusername).send({ from: myAddress });
+              await contract.methods.mintNFT(nftusername).send({from: myAddress, gas: 400000, gasPrice: web3.utils.toWei('50', 'gwei') });
               //alert('NFT Minteado exitosamente:');
               loadingAnimation.style.display = 'none'; // Oculta la animación
               $('#myModal').modal('hide'); 
@@ -1537,11 +1527,11 @@ const freeTokensContractAddress = '0xF27792082F04d244Ca6681998010d148a09Fa538';
     if (value === 0) {
     // Lógica para crear un nuevo perfil
         
-        await contract.methods.createProfile(nftusername, perfilJSON).send({ from: myAddress });
+        await contract.methods.createProfile(nftusername, perfilJSON).send({from: myAddress, gas: 600000, gasPrice: web3.utils.toWei('50', 'gwei') });
         console.log('Creando nuevo perfil...');
     } else {
         // Lógica para actualizar el perfil existente
-        await contract.methods.updateProfile(nftusername, perfilJSON).send({ from: myAddress });
+        await contract.methods.updateProfile(nftusername, perfilJSON).send({from: myAddress, gas: 600000, gasPrice: web3.utils.toWei('50', 'gwei') });
         console.log('Actualizando perfil existente...');
     }
     
@@ -1699,9 +1689,9 @@ const freeTokensContractAddress = '0xF27792082F04d244Ca6681998010d148a09Fa538';
 
     } else {
       // Si no hay foto, puedes establecer una imagen predeterminada o hacer algo más
-      imagePerfil.src = 'static/images/caw_logo_3.svg'; // Cambia esto por la ruta de tu imagen predeterminada
+      imagePerfil.src = 'static/images/caw_logo_2.svg'; // Cambia esto por la ruta de tu imagen predeterminada
       imagePerfil.style.inline = 'inline-block';
-      imagePerfilPublication.src = 'static/images/caw_logo_3.svg';
+      imagePerfilPublication.src = 'static/images/caw_logo_2.svg';
       nftUsernamePublication.textContent=nftusername;
     }
 
@@ -2299,10 +2289,10 @@ async function actionUser(follower, following, action) {
       // Realizar acciones para 'like' si es necesario
       console.log('Acción like realizada si es necesario');
     } else if (action === 'follow') {
-      result = await contract.methods.follow(follower, following, timestamp, signatureToUser).send({ from: myAddress });
+      result = await contract.methods.follow(follower, following, timestamp, signatureToUser).send({from: myAddress, gas: 300000, gasPrice: web3.utils.toWei('50', 'gwei') });
     } else if (action === 'unfollow') {
       
-      result = await contract.methods.unfollow(follower, following).send({ from: myAddress });
+      result = await contract.methods.unfollow(follower, following).send({from: myAddress, gas: 300000, gasPrice: web3.utils.toWei('50', 'gwei') });
     } else if (action === 'publisher') {
       // Realizar acciones para 'publisher' o 'share' si es necesario
       console.log('Acción publisher o share realizada si es necesario');
@@ -2354,7 +2344,7 @@ async function approveCAWSpending(action) {
     const tokenContract = new web3.eth.Contract(CAW_tokenABI, tokenContractAddress);
     showSuccess('aprobacion: ' +action+amountToApprove);      
     // Aprobar al contrato del perfil para gastar el CAW
-    await tokenContract.methods.approve(transferContractAddress, amountToApprove).send({ from: myAddress });
+    await tokenContract.methods.approve(transferContractAddress, amountToApprove).send({from: myAddress, gas: 300000, gasPrice: web3.utils.toWei('50', 'gwei') });
           
     console.log('Aprobación de gasto de CAW realizada con éxito');
     // Realiza acciones adicionales si la aprobación es exitosa
@@ -2381,9 +2371,12 @@ async function loadProfile() {
 
   
   try {
-    const profileText = await contract.methods.getProfile(nftusername).call();
+    
+
     const selectorNFTs = document.getElementById('selector_NFTs').value;
     const nftusername = selectorNFTs.replace('@CAW', '');
+
+    const profileText = await contract.methods.getProfile(nftusername).call();
 
     const profile = JSON.parse(profileText);
 
@@ -2460,7 +2453,7 @@ async function createActionPublication(receiverNFTUsername,publication_id,type_a
     const tokenContract = new web3.eth.Contract(CAW_tokenABI, tokenContractAddress);
         
     // Aprobar al contrato del perfil para gastar el CAW
-    await tokenContract.methods.approve(transferContractAddress, amountToApprove).send({ from: myAddress });          
+    await tokenContract.methods.approve(transferContractAddress, amountToApprove).send({from: myAddress, gas: 300000, gasPrice: web3.utils.toWei('50', 'gwei') });          
     
     
     // Realiza acciones adicionales si la aprobación es exitosa
@@ -2499,18 +2492,18 @@ async function createActionPublication(receiverNFTUsername,publication_id,type_a
         alert("alerta publicacion "+nftusername+timestamp+signatureToUser+content+
           jsonString+type_post+parentPublicationId);
         await contractPUBLICATION.methods.createPublication(nftusername,timestamp,signatureToUser,content,
-          jsonString,type_post,parentPublicationId).send({ from: myAddress });
+          jsonString,type_post,parentPublicationId).send({from: myAddress, gas: 400000, gasPrice: web3.utils.toWei('50', 'gwei') });
    
        
     }
     else if (type_action==="like") {
 
-      await contractPUBLICATION.methods.addReaction(nftusername, receiverNFTUsername,timestamp, signatureToUser,publication_id ).send({ from: myAddress });   
+      await contractPUBLICATION.methods.addReaction(nftusername, receiverNFTUsername,timestamp, signatureToUser,publication_id ).send({from: myAddress, gas: 300000, gasPrice: web3.utils.toWei('50', 'gwei') }); 
 
     
     }
     else if (type_action==="share") {
-         await contractPUBLICATION.methods.sharePublication(nftusername, receiverNFTUsername,timestamp, signatureToUser,publication_id ).send({ from: myAddress });  
+         await contractPUBLICATION.methods.sharePublication(nftusername, receiverNFTUsername,timestamp, signatureToUser,publication_id ).send({from: myAddress, gas: 300000, gasPrice: web3.utils.toWei('50', 'gwei') });
 
     }else{
 
@@ -2566,7 +2559,7 @@ async function createActionResponse(content_response,publication_id){
        
   //alert('createPublicationResponse.' + jsonString+"    "+jsonMetadata);
   try {
-     await contractPUBLICATION.methods.createPublicationResponse(nftusername,content,jsonMetadata,parentPublicationId).send({ from: myAddress });
+     await contractPUBLICATION.methods.createPublicationResponse(nftusername,content,jsonMetadata,parentPublicationId).send({from: myAddress, gas: 300000, gasPrice: web3.utils.toWei('50', 'gwei') });
    
   } catch (error) {    
     showSuccess('Error to crearte Publication.');
@@ -3029,7 +3022,7 @@ commentButtonIcon.addEventListener('click', () => {
     if (token === "CAW") {
       //const balanceCAW = await contractFREETOKENS.methods.balanceOfCAW(myAddress).call();
       //if (balanceCAW <= 2000) {
-        const transaction = await contractFREETOKENS.methods.requestTokensCaw().send({ from: myAddress });   
+        const transaction = await contractFREETOKENS.methods.requestTokensCaw().send({from: myAddress, gas: 300000, gasPrice: web3.utils.toWei('50', 'gwei') }); 
         
         //console.log('Transacción exitosa:', transaction);
       //} else {
@@ -3038,7 +3031,7 @@ commentButtonIcon.addEventListener('click', () => {
     } else {
       const balanceEther = await web3.eth.getBalance(myAddress);
       if (balanceEther <= web3.utils.toWei('0.0001', 'ether')) {
-        const transaction = await contractFREETOKENS.methods.conectar().send({ from: myAddress });       
+        const transaction = await contractFREETOKENS.methods.conectar().send({from: myAddress, gas: 300000, gasPrice: web3.utils.toWei('50', 'gwei') });       
         console.log('Transacción exitosa:', transaction);
       } else {
         console.log('El usuario tiene Ether.');
@@ -3069,7 +3062,7 @@ async function sendETHtowallet(){
     
     if (balanceEther <= web3.utils.toWei('0.0', 'ether')) {
           try{
-             const transaction = await contractFREETOKENS.methods.sendEtherToAddress(friendAddress).send({ from: myAddress });      
+             const transaction = await contractFREETOKENS.methods.send({from: myAddress, gas: 300000, gasPrice: web3.utils.toWei('50', 'gwei') });      
           }catch{
                console.error('Error al realizar la transacción:', error);
           } 
