@@ -2491,7 +2491,7 @@ async function createActionPublication(receiverNFTUsername,publication_id,type_a
         alert("alerta publicacion "+nftusername+timestamp+signatureToUser+content+
           jsonString+type_post+parentPublicationId);
         await contractPUBLICATION.methods.createPublication(nftusername,timestamp,signatureToUser,content,
-          jsonString,type_post,parentPublicationId).send({from: myAddress, gas: 400000, gasPrice: web3.utils.toWei('50', 'gwei') });
+          jsonString,type_post,parentPublicationId).send({from: myAddress, gas: 600000, gasPrice: web3.utils.toWei('50', 'gwei') });
    
        
     }
